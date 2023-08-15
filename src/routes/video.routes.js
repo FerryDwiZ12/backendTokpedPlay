@@ -3,6 +3,8 @@ const { getAllVideos, createVideo, getOneVideo, searchVideo } = require("../cont
 const verifyToken = require('../middleware/validate.token')
 const routerVideo = express.Router();
 
+
+
 routerVideo.use(verifyToken)
 routerVideo.route("/search").get(searchVideo)
 routerVideo.route("/").get(getAllVideos).post(createVideo);

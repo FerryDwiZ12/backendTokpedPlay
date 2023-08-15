@@ -20,8 +20,8 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-      origin: process.env.ALLOWED_ORIGIN
-  }
+    origin: process.env.ALLOWED_ORIGIN,
+  },
 });
 
 const PORT = process.env.PORT || 7001;
@@ -35,6 +35,10 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
+
+app.get("/", (req, res) => {
+  res.send("helloworld");
+});
 
 app.use("/comment", routerComment);
 app.use("/product", routerProduct);
